@@ -426,6 +426,8 @@ class UnifiAccessHub:
                             "door_name": existing_door.name,
                             "door_id": existing_door.id,
                             "type": DOORBELL_START_EVENT,
+                            "event_data": update["data"],
+                            "event": update
                         }
                         _LOGGER.info(
                             "Doorbell press on %s request id %s",
@@ -452,6 +454,8 @@ class UnifiAccessHub:
                             "door_name": existing_door.name,
                             "door_id": existing_door.id,
                             "type": DOORBELL_STOP_EVENT,
+                            "event_data": update["data"],
+                            "event": update
                         }
                         _LOGGER.info(
                             "Doorbell press stopped on %s request id %s",
@@ -562,6 +566,8 @@ class UnifiAccessHub:
                                 "door_name": existing_door.name,
                                 "door_id": existing_door.id,
                                 "type": DOORBELL_START_EVENT,
+                                "event_data": update["data"],
+                                "event": update
                             }
 
                             # We don't seem to get a message that indicates the end of the doorbell being active
@@ -573,6 +579,8 @@ class UnifiAccessHub:
                                     "door_name": existing_door.name,
                                     "door_id": existing_door.id,
                                     "type": DOORBELL_STOP_EVENT,
+                                    "event_data": update["data"],
+                                    "event": update
                                 }
                                 await asyncio.sleep(2)
                                 await existing_door.trigger_event(
